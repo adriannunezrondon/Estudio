@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+
+    {% block extrastatic %}
+    {% endblock %}
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <title>{% block title %} Document {% endblock  %}</title>
+</head>
+
+<body>
+    <div class="container">
+            {% block navbar %}
+                <div class="navbar navbar-default" role="navigation">
+                     <div class="container-fluid">
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">FLUCAG</a>
+                      </div>
+                  <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Link1</a></li>
+                      <li><a href="#">Link2</a></li>
+                      <li><a href="#">Link3</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mascota <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{% url 'mascota:mascota_crear' %}">Nueva Mascota</a></li>
+                          <li><a href="{% url 'mascota:mascota_listar' %}">Listar Mascotas</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Nav header</li>
+                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Persona <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{% url 'mascota:persona_crear' %}">Nueva Persona</a></li>
+                          <li><a href="{% url 'mascota:persona_listar' %}">Listar Personas</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Nav header</li>
+                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>
+
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Salir</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Nav header</li>
+                          <li><a href="#">Separated link</a></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="active"><a href="http://getbootstrap.com/examples/navbar/">Default</a></li>
+                      <li><a href="#">Bienvenido, {{ user.username }}</a></li>
+                      <li><a href="{% url 'logout' %}">Salir</a></li>
+                    </ul>
+                  </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+              </div>
+
+            {% endblock %}
+
+
+            {% block header %}
+                {% include 'base/header.html' %}
+            {% endblock %}
+
+             {% block content %}
+                <h5> Este es el bloque contenido del archivo base </h5>
+            {% endblock %}
+
+            {% block footer %}
+                <h5> Soy el footer del base </h5>
+            {% endblock %}
+
+
+    </div>
+            <script src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+            {% block extrajs %}
+            {% endblock %}
+</body>
+</html>
